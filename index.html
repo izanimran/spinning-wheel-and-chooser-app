@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="Spin the wheel and pick a finger — the ultimate decision-making app with summer vibes.">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Gotcha! — Decide in Style</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Ambient Background Particles -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <span class="brand-icon">👍</span>
+                <span class="brand-text">Gotcha!</span>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab" data-tab="home" id="navHome">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    <span>Home</span>
+                </button>
+                <button class="nav-tab" data-tab="wheel" id="navWheel">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2v10l7 7"/>
+                        <path d="M12 12L5 19"/>
+                        <path d="M12 12L19 5"/>
+                    </svg>
+                    <span>Wheel</span>
+                </button>
+                <button class="nav-tab" data-tab="chooser" id="navChooser">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 11V6a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v0"/>
+                        <path d="M14 10V4a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v6"/>
+                        <path d="M10 10.5V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v9"/>
+                        <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+                    </svg>
+                    <span>Chooser</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HOME VIEW ===== -->
+    <section id="homeView" class="view active">
+        <div class="home-container">
+            <!-- Floating decorative orbs -->
+            <div class="home-orb home-orb-1"></div>
+            <div class="home-orb home-orb-2"></div>
+            <div class="home-orb home-orb-3"></div>
+
+            <!-- Hero Section -->
+            <div class="home-hero">
+                <div class="home-badge">
+                    <span class="badge-star">👍</span>
+                    <span>The Ultimate Decision App</span>
+                    <span class="badge-star">✨</span>
+                </div>
+                <h1 class="home-title">
+                    <span class="home-title-line1">Can't Decide?</span>
+                    <span class="home-title-line2">We Got You.</span>
+                </h1>
+                <p class="home-subtitle">Stop overthinking. Let fate, physics &amp;<br>your fingertips make the call.</p>
+
+                <!-- Floating emoji row -->
+                <div class="home-emoji-row">
+                    <span class="home-emoji" style="--delay:0s">🎰</span>
+                    <span class="home-emoji" style="--delay:0.2s">🤌</span>
+                    <span class="home-emoji" style="--delay:0.4s">🎯</span>
+                    <span class="home-emoji" style="--delay:0.6s">✨</span>
+                    <span class="home-emoji" style="--delay:0.8s">🎲</span>
+                </div>
+            </div>
+
+            <!-- Mode Cards -->
+            <div class="home-cards">
+                <!-- Wheel Card -->
+                <button class="home-card home-card-wheel" id="homeCardWheel" data-tab="wheel">
+                    <div class="home-card-glow"></div>
+                    <div class="home-card-icon">
+                        <div class="mini-wheel">
+                            <div class="mini-wheel-seg" style="--i:0"></div>
+                            <div class="mini-wheel-seg" style="--i:1"></div>
+                            <div class="mini-wheel-seg" style="--i:2"></div>
+                            <div class="mini-wheel-seg" style="--i:3"></div>
+                            <div class="mini-wheel-center"></div>
+                        </div>
+                    </div>
+                    <div class="home-card-body">
+                        <h2 class="home-card-title">Spin the Wheel</h2>
+                        <p class="home-card-desc">Add your options, give it a rip, and let the roulette gods decide.</p>
+                        <div class="home-card-tag">🎰 Roulette Mode</div>
+                    </div>
+                    <div class="home-card-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </button>
+
+                <!-- Chooser Card -->
+                <button class="home-card home-card-chooser" id="homeCardChooser" data-tab="chooser">
+                    <div class="home-card-glow"></div>
+                    <div class="home-card-icon">
+                        <div class="mini-fingers">
+                            <div class="mini-finger" style="--fi:0"></div>
+                            <div class="mini-finger" style="--fi:1"></div>
+                            <div class="mini-finger" style="--fi:2"></div>
+                        </div>
+                    </div>
+                    <div class="home-card-body">
+                        <h2 class="home-card-title">Finger Chooser</h2>
+                        <p class="home-card-desc">Slam your fingers down. One survives. No arguments — it's science.</p>
+                        <div class="home-card-tag">🤌 Touch Mode</div>
+                    </div>
+                    <div class="home-card-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Footer Quip -->
+            <p class="home-footer-quip">100% certified decision-making technology&nbsp;🧪</p>
+        </div>
+    </section>
+
+    <!-- ===== WHEEL VIEW ===== -->
+    <section id="wheelView" class="view">
+        <div class="wheel-container">
+            <!-- Wheel Header -->
+            <div class="wheel-header">
+                <h1 id="wheelTitle">Spin to Decide</h1>
+                <p class="wheel-subtitle">Add options and let fate choose</p>
+            </div>
+
+            <!-- Wheel Canvas Area -->
+            <div class="wheel-stage">
+                <div class="wheel-glow"></div>
+                <div class="wheel-pointer">
+                    <svg viewBox="0 0 40 60" fill="none">
+                        <path d="M20 60L0 15Q0 0 20 0Q40 0 40 15Z" fill="url(#pointerGrad)"/>
+                        <defs>
+                            <linearGradient id="pointerGrad" x1="20" y1="0" x2="20" y2="60">
+                                <stop offset="0%" stop-color="#FF6B6B"/>
+                                <stop offset="100%" stop-color="#ee5a24"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="wheel-wrapper">
+                    <canvas id="wheelCanvas"></canvas>
+                    <div class="wheel-center-cap">
+                        <span>SPIN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spin Button -->
+            <button id="spinBtn" class="spin-button">
+                <span class="spin-button-text">Spin the Wheel</span>
+                <div class="spin-button-shine"></div>
+            </button>
+
+            <!-- Options Panel -->
+            <div class="options-panel">
+                <div class="options-header">
+                    <h2>Options <span id="optionCount" class="option-count">2</span></h2>
+                    <div class="options-actions">
+                        <button id="shuffleBtn" class="icon-btn" title="Shuffle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                        </button>
+                        <button id="resetBtn" class="icon-btn" title="Reset">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="optionsList" class="options-list">
+                    <!-- Options rendered by JS -->
+                </div>
+                <button id="addOptionBtn" class="add-option-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <span>Add Option</span>
+                </button>
+                <p id="optionLimit" class="option-limit-msg" style="display:none;">Maximum 20 options reached</p>
+            </div>
+        </div>
+
+        <!-- Result Modal -->
+        <div id="wheelResultModal" class="result-modal">
+            <div class="result-modal-backdrop"></div>
+            <div class="result-modal-content">
+                <div class="result-confetti-container" id="confettiContainer"></div>
+                <div class="result-emoji">🎉</div>
+                <h2>The Winner Is</h2>
+                <div id="wheelResultText" class="result-text"></div>
+                <button id="closeResultBtn" class="result-close-btn">Got It!</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CHOOSER VIEW ===== -->
+    <section id="chooserView" class="view">
+        <div class="chooser-container">
+            <div class="chooser-instructions" id="chooserInstructions">
+                <div class="chooser-icon-wrap">
+                    <svg class="chooser-hand-icon" viewBox="0 0 80 80" fill="none">
+                        <circle cx="40" cy="40" r="35" stroke="url(#handGrad)" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+                        <g transform="translate(22, 15) scale(1.5)">
+                            <path d="M18 11V6a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v0" stroke="url(#handGrad)" stroke-width="1.5" fill="none"/>
+                            <path d="M14 10V4a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v6" stroke="url(#handGrad)" stroke-width="1.5" fill="none"/>
+                            <path d="M10 10.5V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v9" stroke="url(#handGrad)" stroke-width="1.5" fill="none"/>
+                            <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" stroke="url(#handGrad)" stroke-width="1.5" fill="none"/>
+                        </g>
+                        <defs>
+                            <linearGradient id="handGrad" x1="0" y1="0" x2="80" y2="80">
+                                <stop offset="0%" stop-color="#FF6B6B"/>
+                                <stop offset="100%" stop-color="#F4A261"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1>Finger Chooser</h1>
+                <p>Place 2 or more fingers on the screen.<br>One will be randomly chosen!</p>
+                <div class="chooser-hint">
+                    <span class="hint-dot"></span>
+                    Waiting for fingers...
+                </div>
+            </div>
+            <canvas id="chooserCanvas"></canvas>
+        </div>
+
+        <!-- Chooser Result Overlay -->
+        <div id="chooserResultOverlay" class="chooser-result-overlay">
+            <div class="chooser-result-content">
+                <div class="chosen-text">Chosen!</div>
+                <button id="chooserResetBtn" class="chooser-reset-btn">Try Again</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/particles.js"></script>
+    <script src="js/wheel.js"></script>
+    <script src="js/chooser.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
